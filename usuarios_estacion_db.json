@@ -1,0 +1,34 @@
+[
+  {
+    "username": "admin",
+    "nombreCompleto": "Rodrigo Castro Sandoval",
+    "cargoSector": "Administrador General IoT / OT",
+    "rol": "Admin",
+    "hashPassword": "7d2f2dbdc6edbfe331531b143794c012bad71b16670e2b4c20851aa285bcb18c",
+    "fechaRegistro": "Base Sistema"
+  },
+  {
+    "username": "operador_ot",
+    "nombreCompleto": "Operador de Campo Agrícola",
+    "cargoSector": "Invernadero Hortalizas Sector 1",
+    "rol": "Operador OT",
+    "hashPassword": "db461f536fe7f2c1695b048bb77a310fb370ebad0689a483bf4c3e970adf5e0d",
+    "fechaRegistro": "Base Sistema"
+  },
+  {
+    "username": "inacap",
+    "nombreCompleto": "Evaluador Docente TI3042",
+    "cargoSector": "Auditoría Académica ISO/OT",
+    "rol": "Admin",
+    "hashPassword": "45270444b9a45bea8590788888dfd108d057dd2f0e06f6cf1dc85e7681b46b4f",
+    "fechaRegistro": "Base Sistema"
+  },
+  {
+    "username": "rodryxb",
+    "nombreCompleto": "Rodrigo Operador Admin",
+    "cargoSector": "Estación Central PC / Móvil",
+    "rol": "Admin",
+    "hashPassword": "53db7d7513b10c42512b0fa619085a4759d479c2476ba3ff209760dd85a3fe91",
+    "fechaRegistro": "Sincronizado BD PC"
+  }
+]

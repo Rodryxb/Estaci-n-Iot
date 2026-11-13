@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    AndroidManifest.xml - Archivo de configuración principal de la aplicación Android.
+    Proyecto: Estación Meteorológica Portátil (Arduino UNO R4 WiFi)
+    Asignatura: Aplicaciones Móviles para IoT (TI3042 - INACAP)
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ========================================================================= -->
+    <!-- PERMISOS DE CONECTIVIDAD INALÁMBRICA (Criterio 2.1.2.3 y 2.1.4.7)         -->
+    <!-- ========================================================================= -->
+
+    <!-- Permite abrir sockets TCP/UDP y peticiones HTTP por Wi-Fi hacia otro Android o Arduino R4 WiFi -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Permite verificar si el dispositivo está conectado a una red Wi-Fi activa -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Permite obtener la dirección IP local del teléfono y el estado de la señal Wi-Fi (RSSI) -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- Permite recibir paquetes UDP Broadcast en la red local para descubrir estaciones cercanas -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
+    <!-- Permisos de Bluetooth clásicos (para versiones Android 11 / API 30 o inferior) -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+
+    <!-- Permisos de Bluetooth modernos (Android 12+ / API 31+) siguiendo buenas prácticas de seguridad -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_SCAN"
+        android:usesPermissionFlags="neverForLocation"
+        tools:targetApi="s" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <!-- Declaramos que el hardware Bluetooth es opcional para no bloquear emuladores sin adaptador BT -->
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+
+    <!--
+        usesCleartextTraffic="true": Permite comunicación en red local (LAN) con el Arduino UNO R4 WiFi
+        y sockets locales sin requerir un certificado TLS de dominio público, dado que implementamos
+        cifrado de capa de aplicación AES-256 + firma SHA-256 (ISO/IEC 27001 / 27400).
+    -->
+    <application
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EstacionMeteorologicaIoT"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+
+        <!-- Actividad Principal que aloja el grafo de navegación de Jetpack Compose -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EstacionMeteorologicaIoT"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <!-- Define que esta Activity es el punto de entrada principal (MAIN) y aparece en el menú (LAUNCHER) -->
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
